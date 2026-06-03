@@ -13,4 +13,7 @@
   - [Товары и категории](https://drive.google.com/file/d/1PZde5agDkjH1Wxx5tNnHMak_4UMFXeJ4/view?usp=sharing)  
   - [Анализ отзывов](https://drive.google.com/file/d/1J_IMGatyb9mJSK3dIp_nBD2htyDAy3oN/view?usp=sharing)
 
+![Главная страница](images/1_Гланая.jpg)
+
+
 > Для просмотра дашборда установите бесплатный Power BI Desktop (ссылка на официальном сайте Microsoft). Данные внутри файла, интернет не требуется.
