@@ -7,7 +7,6 @@
 Интерактивный отчёт по продажам интернет-магазина Olist (выручка, средний чек, топ-категории, анализ продавцов, отзывы).
 
 - **Скачать файл `.pbix`** (Power BI Desktop): [Ссылка на файл на Google Диске](https://drive.google.com/file/d/1pKFsotzXYlLWfth1KISY_1fiC6gMkCCa/view?usp=sharing)  
-- **Скриншоты страниц:**  
 
 ## 📸 Скриншоты дашборда
 
