@@ -6,7 +6,7 @@
 
 ---
 
-## 📁 Состав проекта
+## Состав проекта
 
 | Файл | Описание |
 |------|----------|
@@ -21,7 +21,7 @@
 
 ---
 
-## 🧠 Этапы проектирования
+## Этапы проектирования
 
 ### 1. Концептуальная модель
 - Выделены основные бизнес-сущности (Товар, Заказ, Клиент, Сотрудник и др.).
@@ -43,22 +43,20 @@
 
 ---
 
-## 📊 Примеры запросов (из `queries.sql`)
+## Примеры запросов (из `queries.sql`)
 
 ```sql
 -- 1. Общая сумма заказов по клиентам
 SELECT c.surname, c.name, SUM(o.total) AS total_spent
 FROM client c
-JOIN ordering o ON c.id_client = o.id_client_(FK)
+JOIN ordering o ON c.id_client = o.id_client_fk
 GROUP BY c.id_client
 ORDER BY total_spent DESC;
 
 -- 2. Топ-5 популярных товаров
-SELECT p.title, COUNT(po.id_product_(FK)) AS order_count
+SELECT p.title, COUNT(po.id_product_fk) AS order_count
 FROM product p
-JOIN product_ordering po ON p.id_product = po.id_product_(FK)
+JOIN product_ordering po ON p.id_product = po.id_product_fk
 GROUP BY p.id_product
 ORDER BY order_count DESC
 LIMIT 5;
-
-![ER-диаграмма](er-diagram.png)
