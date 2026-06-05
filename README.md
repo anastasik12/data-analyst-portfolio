@@ -21,7 +21,7 @@
 
 **ER-диаграмма (физическая модель):**
 
-![ER-диаграмма](sql/physical_diagram.png)
+![ER-диаграмма](sql_shop_database/physical_diagram.png)
 
 
 ## 🐍 Python: Разведочный анализ данных Olist
