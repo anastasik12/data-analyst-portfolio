@@ -18,6 +18,7 @@
 
 **Файлы:**
 - [Код создания таблиц (schema.sql)](sql_shop_database/schema.sql)
+- [Аналитические запросы (queries.sql)](sql_shop_database/queries.sql)
 
 **ER-диаграмма (физическая модель):**
 
