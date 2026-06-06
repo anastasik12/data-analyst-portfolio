@@ -46,7 +46,7 @@
 
 Интерактивный отчёт по продажам Olist: выручка, средний чек, топ-категории, анализ продавцов и отзывов.
 
-- **Видео-демонстрация дашборда:** [Смотреть на Google Диске]((https://drive.google.com/file/d/1KfdwomQ--OtQDjt273BZzH96m6OAPjfg/view?usp=sharing))
+- **Видео-демонстрация дашборда:** [Смотреть на Google Диске](https://drive.google.com/file/d/1KfdwomQ--OtQDjt273BZzH96m6OAPjfg/view?usp=sharing)
 - **Скачать файл `.pbix` (для Power BI Desktop):** [Ссылка на Google Диске](https://drive.google.com/file/d/1pKFsotzXYlLWfth1KISY_1fiC6gMkCCa/view?usp=sharing)
 
 ### Скриншоты
