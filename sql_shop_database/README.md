@@ -46,17 +46,49 @@
 ## Примеры запросов (из `queries.sql`)
 
 ```sql
--- 1. Общая сумма заказов по клиентам
-SELECT c.surname, c.name, SUM(o.total) AS total_spent
-FROM client c
-JOIN ordering o ON c.id_client = o.id_client_fk
-GROUP BY c.id_client
-ORDER BY total_spent DESC;
+-- 1. Топ-3 товара в каждой категории по выручке (оконная функция RANK)
+WITH ranked_products AS (
+    SELECT 
+        p.category_name,
+        p.product_name,
+        SUM(oi.price * oi.quantity) AS total_revenue,
+        RANK() OVER (PARTITION BY p.category_name ORDER BY SUM(oi.price * oi.quantity) DESC) AS rank
+    FROM products p
+    JOIN order_items oi ON p.product_id = oi.product_id
+    GROUP BY p.category_name, p.product_name
+)
+SELECT category_name, product_name, total_revenue
+FROM ranked_products
+WHERE rank <= 3;
 
--- 2. Топ-5 популярных товаров
-SELECT p.title, COUNT(po.id_product_fk) AS order_count
-FROM product p
-JOIN product_ordering po ON p.id_product = po.id_product_fk
-GROUP BY p.id_product
-ORDER BY order_count DESC
-LIMIT 5;
+-- 2. Для каждого заказа — дата предыдущего заказа того же клиента (LAG)
+SELECT 
+    o.order_id,
+    o.customer_id,
+    o.order_date,
+    LAG(o.order_date) OVER (PARTITION BY o.customer_id ORDER BY o.order_date) AS previous_order_date
+FROM orders o;
+
+-- 3. Скользящее среднее суммы заказа за последние 3 дня
+WITH daily_revenue AS (
+    SELECT 
+        o.order_date,
+        SUM(oi.price * oi.quantity) AS daily_total
+    FROM orders o
+    JOIN order_items oi ON o.order_id = oi.order_id
+    GROUP BY o.order_date
+)
+SELECT 
+    order_date,
+    daily_total,
+    AVG(daily_total) OVER (ORDER BY order_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_avg_3d
+FROM daily_revenue;
+
+-- 4. Выручка по категориям (JOIN, GROUP BY)
+SELECT 
+    p.category_name,
+    SUM(oi.price * oi.quantity) AS category_revenue
+FROM products p
+JOIN order_items oi ON p.product_id = oi.product_id
+GROUP BY p.category_name
+ORDER BY category_revenue DESC;
